@@ -20,6 +20,9 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>Work Day Scheduler</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="moment.js"></script>    
+
   </head>
 
   <body>
@@ -30,13 +33,218 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
-      <div>
 
+      <!-- 9am -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          9 AM
+        </div>
+        <div class="col-md-8 present" id="9am">
+          <textarea
+            name="textbox9am"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn1">Save</button>
+        </div>
       </div>
+
+      <br />
+      <!-- 10am -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          10 AM
+        </div>
+        <div class="col-md-8 present" id="10am">
+          <textarea
+            name="textbox10am"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn2">Save</button>
+        </div>
+      </div>
+
+      <br />
+      <!-- 11am -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          11 AM
+        </div>
+        <div class="col-md-8 present" id="11am">
+          <textarea
+            name="textbox11am"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn3">Save</button>
+        </div>
+      </div>
+
+      <br />
+      <!-- 12pm -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          12 PM
+        </div>
+        <div class="col-md-8 present" id="12am">
+          <textarea
+            name="textbox12pm"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn4">Save</button>
+        </div>
+      </div>
+
+      <br />
+      <!-- 1pm -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          1 PM
+        </div>
+        <div class="col-md-8 present" id="1pm">
+          <textarea
+            name="textbox1pm"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn5">Save</button>
+        </div>
+      </div>
+
+      <br />
+      <!-- 2pm -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          2 PM
+        </div>
+        <div class="col-md-8 present" id="2pm">
+          <textarea
+            name="textbox2pm"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn6">Save</button>
+        </div>
+      </div>
+
+      <br />
+      <!-- 3pm -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          3 PM
+        </div>
+        <div class="col-md-8 present" id="3pm">
+          <textarea
+            name="textbox3pm"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn7">Save</button>
+        </div>
+      </div>
+
+      <br />
+
+      <!-- 4pm -->
+      <div class="row">
+        <div class="col-md-2 hour">
+          4 PM
+        </div>
+        <div class="col-md-8 present" id="4pm">
+          <textarea
+            name="textbox4pm"
+            id=""
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn8">Save</button>
+        </div>
+      </div>
+
+      <br />
+      <!-- 5pm -->
+      <div class="row 5pmparrent">
+        <div class="col-md-2 hour">
+          5 PM
+        </div>
+        <div class="col-md-8 present" id="5pm">
+          <textarea
+            name="textbox5pm"
+            id="textbox5pm"
+            cols="80"
+            rows="2"
+            placeholder="Put your text here:"
+          ></textarea>
+        </div>
+        <div class="col-md-2">
+          <button class="saveBtn" id="btn9">Save</button>
+        </div>
+      </div>
+
+      <br />
     </div>
+
+    <script type="text/javascript">
+  // save text content to local storage
+  // pull from Storage on website load
+  // get moment linked
+  // set up boxes to change class on time
+    $("#btn1").click(function(){
+      $("#9am").removeClass("present").addClass("past")
+    });
+
+    $("#btn9").click(function(){
+      var text5 = $("#textbox5pm").html();
+      
+   
     
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    })
+    thing()
+    function thing(){
+      setInterval(function(){
+      var ShownTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+      $("#currentDay").text(ShownTime);
+
+    }, 1000)}
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

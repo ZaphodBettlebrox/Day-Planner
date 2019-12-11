@@ -21,8 +21,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Work Day Scheduler</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="moment.js"></script>    
-
+    <script src="moment.js"></script>
   </head>
 
   <body>
@@ -35,14 +34,14 @@
       <!-- Timeblocks go here -->
 
       <!-- 9am -->
-      <div class="row">
+      <div class="row" id="9">
         <div class="col-md-2 hour">
           9 AM
         </div>
-        <div class="col-md-8 present" id="9am">
+        <div class="col-md-8" id="9am">
           <textarea
-            name="textbox9am"
-            id=""
+            class="boxstyle"
+            id="textbox9am"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -53,16 +52,15 @@
         </div>
       </div>
 
-      <br />
       <!-- 10am -->
-      <div class="row">
+      <div class="row" id="10">
         <div class="col-md-2 hour">
           10 AM
         </div>
-        <div class="col-md-8 present" id="10am">
+        <div class="col-md-8" id="10am">
           <textarea
-            name="textbox10am"
-            id=""
+          class="boxstyle"
+            id="textbox10am"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -73,16 +71,15 @@
         </div>
       </div>
 
-      <br />
       <!-- 11am -->
-      <div class="row">
+      <div class="row" id="11">
         <div class="col-md-2 hour">
           11 AM
         </div>
-        <div class="col-md-8 present" id="11am">
+        <div class="col-md-8" id="11am">
           <textarea
-            name="textbox11am"
-            id=""
+          class="boxstyle"
+            id="textbox11am"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -93,16 +90,15 @@
         </div>
       </div>
 
-      <br />
       <!-- 12pm -->
-      <div class="row">
+      <div class="row" id="12">
         <div class="col-md-2 hour">
           12 PM
         </div>
-        <div class="col-md-8 present" id="12am">
+        <div class="col-md-8" id="12pm">
           <textarea
-            name="textbox12pm"
-            id=""
+          class="boxstyle"
+            id="textbox12pm"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -113,16 +109,15 @@
         </div>
       </div>
 
-      <br />
       <!-- 1pm -->
-      <div class="row">
+      <div class="row" id="13">
         <div class="col-md-2 hour">
           1 PM
         </div>
-        <div class="col-md-8 present" id="1pm">
+        <div class="col-md-8" id="1pm">
           <textarea
-            name="textbox1pm"
-            id=""
+          class="boxstyle"
+            id="textbox1pm"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -133,16 +128,15 @@
         </div>
       </div>
 
-      <br />
       <!-- 2pm -->
-      <div class="row">
+      <div class="row" id="14">
         <div class="col-md-2 hour">
           2 PM
         </div>
-        <div class="col-md-8 present" id="2pm">
+        <div class="col-md-8" id="2pm">
           <textarea
-            name="textbox2pm"
-            id=""
+          class="boxstyle"
+            id="textbox2pm"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -153,16 +147,15 @@
         </div>
       </div>
 
-      <br />
       <!-- 3pm -->
-      <div class="row">
+      <div class="row" id="15">
         <div class="col-md-2 hour">
           3 PM
         </div>
-        <div class="col-md-8 present" id="3pm">
+        <div class="col-md-8" id="3pm">
           <textarea
-            name="textbox3pm"
-            id=""
+            class="boxstyle"
+            id="textbox3pm"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -173,17 +166,16 @@
         </div>
       </div>
 
-      <br />
 
       <!-- 4pm -->
-      <div class="row">
+      <div class="row" id="16">
         <div class="col-md-2 hour">
           4 PM
         </div>
-        <div class="col-md-8 present" id="4pm">
+        <div class="col-md-8" id="4pm">
           <textarea
-            name="textbox4pm"
-            id=""
+            class="boxstyle"
+            id="textbox4pm"
             cols="80"
             rows="2"
             placeholder="Put your text here:"
@@ -194,15 +186,14 @@
         </div>
       </div>
 
-      <br />
       <!-- 5pm -->
-      <div class="row 5pmparrent">
+      <div class="row" id="17">
         <div class="col-md-2 hour">
           5 PM
         </div>
-        <div class="col-md-8 present" id="5pm">
+        <div class="col-md-8" id="5pm">
           <textarea
-            name="textbox5pm"
+            class="boxstyle"
             id="textbox5pm"
             cols="80"
             rows="2"
@@ -214,31 +205,154 @@
         </div>
       </div>
 
-      <br />
     </div>
 
     <script type="text/javascript">
-  // save text content to local storage
-  // pull from Storage on website load
-  // get moment linked
-  // set up boxes to change class on time
-    $("#btn1").click(function(){
-      $("#9am").removeClass("present").addClass("past")
-    });
+      var currenthour = moment().format("H");
+      var currhour = parseInt(currenthour);
+      loadStorage();
 
-    $("#btn9").click(function(){
-      var text5 = $("#textbox5pm").html();
+      GlobalDate();
+      function GlobalDate() {
+        setInterval(function() {
+          var ShownTime = moment().format("MMMM Do YYYY, h:mm:ss a");
+          $("#currentDay").text(ShownTime);
+        }, 1000);
+      }
+
+      VisualChange();
+      function VisualChange() {
+        setInterval(function() {
+          if (currhour > 9) {
+            $("#9am").addClass("past");
+          } else if (currhour == 9) {
+            $("#9am").addClass("present");
+          } else {
+            $("#9am").addClass("future");
+          }
+
+          if (currhour > 10) {
+            $("#10am").addClass("past");
+          } else if (currhour == 10) {
+            $("#10am").addClass("present");
+          } else {
+            $("#10am").addClass("future");
+          }
+
+          if (currenthour > 11) {
+            $("#11am").addClass("past");
+          } else if (currenthour == 11) {
+            $("#11am").addClass("present");
+          } else {
+            $("#11am").addClass("future");
+          }
+
+          if (currenthour > 12) {
+            $("#12pm").addClass("past");
+          } else if (currenthour == 12) {
+            $("#12pm").addClass("present");
+          } else {
+            $("#12pm").addClass("future");
+          }
+          if (currenthour > 13) {
+            $("#1pm").addClass("past");
+          } else if (currenthour == 13) {
+            $("#1pm").addClass("present");
+          } else {
+            $("#1pm").addClass("future");
+          }
+          if (currenthour > 14) {
+            $("#2pm").addClass("past");
+          } else if (currenthour == 14) {
+            $("#2pm").addClass("present");
+          } else {
+            $("#2pm").addClass("future");
+          }
+          if (currenthour > 15) {
+            $("#3pm").addClass("past");
+          } else if (currenthour == 15) {
+            $("#3pm").addClass("present");
+          } else {
+            $("#3pm").addClass("future");
+          }
+          if (currenthour > 16) {
+            $("#4pm").addClass("past");
+          } else if (currenthour == 16) {
+            $("#4pm").addClass("present");
+          } else {
+            $("#4pm").addClass("future");
+          }
+          if (currenthour > 17) {
+            $("#5pm").addClass("past");
+          } else if (currenthour == 17) {
+            $("#5pm").addClass("present");
+          } else {
+            $("#5pm").addClass("future");
+          }
+        }, 1000);
+      }
+
+      //  copy text into var and run save to storage
+     
+      $("#btn1").click(function() {
+        form1 = $("#textbox9am").val();
+        window.localStorage.setItem('9am', JSON.stringify(form1));
+      });
+      $("#btn2").click(function() {
+        form2 = $("#textbox10am").val();
+        window.localStorage.setItem('10am', JSON.stringify(form2));
+      });
+      $("#btn3").click(function() {
+        form3 = $("#textbox11am").val();
+        window.localStorage.setItem('11am', JSON.stringify(form3));
+      });
+      $("#btn4").click(function() {
+        var form1 = $("#textbox12pm").val();
+        window.localStorage.setItem('12pm', JSON.stringify(form1));
+      });
+      $("#btn5").click(function() {
+        var form1 = $("#textbox1pm").val();
+        window.localStorage.setItem('1pm', JSON.stringify(form1));
+      });
+      $("#btn6").click(function() {
+        var form1 = $("#textbox2pm").val();
+        window.localStorage.setItem('2pm', JSON.stringify(form1));
+      });
+      $("#btn7").click(function() {
+        var form1 = $("#textbox3pm").val();
+        window.localStorage.setItem('3pm', JSON.stringify(form1));
+      });
+      $("#btn8").click(function() {
+        var form1 = $("#textbox4pm").val();
+        window.localStorage.setItem('4pm', JSON.stringify(form1));
+      });
+      $("#btn9").click(function() {
+        var form1 = $("#textbox5pm").val();
+        window.localStorage.setItem('5pm', JSON.stringify(form1));
+      });
       
-   
-    
-    })
-    thing()
-    function thing(){
-      setInterval(function(){
-      var ShownTime = moment().format('MMMM Do YYYY, h:mm:ss a');
-      $("#currentDay").text(ShownTime);
 
-    }, 1000)}
+      //  on page load, populate textboxes with localStorage
+      function loadStorage() {
+      var load1 = JSON.parse( localStorage.getItem('9am') );
+      $('#textbox9am').val(load1)
+      var load2 = JSON.parse( localStorage.getItem('10am') );
+      $('#textbox10am').val(load2)
+      var load3 = JSON.parse( localStorage.getItem('11am') );
+      $('#textbox11am').val(load3)
+      var load4 = JSON.parse( localStorage.getItem('12pm') );
+      $('#textbox12pm').val(load4)
+      var load5 = JSON.parse( localStorage.getItem('1pm') );
+      $('#textbox1pm').val(load5)
+      var load6 = JSON.parse( localStorage.getItem('2pm') );
+      $('#textbox2pm').val(load6)
+      var load7 = JSON.parse( localStorage.getItem('3pm') );
+      $('#textbox3pm').val(load7)
+      var load8 = JSON.parse( localStorage.getItem('4pm') );
+      $('#textbox4pm').val(load8)
+      var load9 = JSON.parse( localStorage.getItem('5pm') );
+      $('#textbox5pm').val(load9)
+      }
     </script>
 
     <script

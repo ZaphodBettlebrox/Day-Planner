@@ -82,6 +82,23 @@ textarea{
   padding: 0;
   margin: 0;
 }
-
+.col-md-8{
+  padding: 0;
+}
+.boxstyle{
+  width: 45vw;
+}
+.row{
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+@media only screen and (max-width: 770px) {
+.col-md-8{
+  width: 40vw;
+}
+.col-md-2{
+  width: 40vw;
+}
+}
 
 
